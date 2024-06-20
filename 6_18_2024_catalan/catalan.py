@@ -1,4 +1,6 @@
 import itertools
+
+
 def parenthesizations(n):
   """
   Returns a set of all possible parenthesizations of length n.
@@ -89,14 +91,6 @@ def permutations_avoiding_231(n):
     return result  
 
 
-
-# Recording the time taken for each call
-time_3 = end_time_3 - start_time_3
-time_6 = end_time_6 - start_time_6
-time_7 = end_time_7 - start_time_7
-print(f"Time taken for permutations_avoiding_231(3): {time_3} seconds")
-print(f"Time taken for permutations_avoiding_231(6): {time_6} seconds")
-print(f"Time taken for permutations_avoiding_231(7): {time_7} seconds")
 def triangulations(n):
   """
   Returns a set of all possible triangulations of an n-sided polygon. A triangulation
@@ -111,7 +105,6 @@ def triangulations(n):
   Example:
   >>> triangulations(5)
   {((0, 3), (1, 3)), ((1, 4), (2, 4)), ((1, 3), (1, 4)), ((0, 2), (2, 4)), ((0, 2), (0, 3))}
-  Note: wasn't able to get this to 100% work, but it is pretty close.
   """
   if n < 3:
     return set()
