@@ -2,6 +2,7 @@ import itertools
 
 def parenthesizations(n):
   """
+  .
   Returns a set of all possible parenthesizations of length n.
 
   Parameters:
