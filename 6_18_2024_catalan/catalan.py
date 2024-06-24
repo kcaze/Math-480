@@ -17,8 +17,12 @@ def parenthesizations(n):
   if n == 0:
     return {""}
   else:
-    # TODO
-    pass
+    result = set()
+    for i in range(n):
+      for c in parenthesizations(i):
+        for d in parenthesizations(n - i - 1):
+          result.add("(" + c + ")" + d)
+    return result
 
 def product_orders(n):
   """
@@ -41,8 +45,21 @@ def product_orders(n):
   elif n == 2:
     return {"?*?"}
   else:
-    # TODO
-    pass
+    result = set()
+    for i in range(2,n-1):
+      for c in product_orders(i):
+        for d in product_orders(n - i):
+          left = c if i == 1 else "(" + c + ")"
+          right = d if n - i - 1 == 1 else "(" + d + ")"
+          result.add(left + "*" + right)
+    for c in product_orders(n-1):
+      if n-1 == 1:
+        result.add(c + "*?")
+        result.add("?*" + c)
+      else:
+        result.add("?*(" + c+ ")")
+        result.add("(" + c + ")*?")
+    return result
 
 def permutations_avoiding_231(n):
   """
@@ -58,11 +75,8 @@ def permutations_avoiding_231(n):
   >>> permutations_avoiding_231(4)
   {(1, 2, 3, 4), (1, 2, 4, 3), (1, 3, 2, 4), (1, 4, 2, 3), (1, 4, 3, 2), (2, 1, 3, 4), (2, 1, 4, 3), (3, 1, 2, 4), (3, 2, 1, 4), (4, 1, 2, 3), (4, 1, 3, 2), (4, 2, 1, 3), (4, 3, 1, 2), (4, 3, 2, 1)}
   """
-  if n < 3:
-    return set(itertools.permutations(range(1, n+1)))
-  else:
-    # TODO
-    pass
+  return [p for p in itertools.permutations(range(1, n + 1), n)
+    if not any(p[k] < p[i] < p[j] for i,j,k in itertools.combinations(range(n),3))]
 
 def triangulations(n):
   """
@@ -83,6 +97,16 @@ def triangulations(n):
     return set()
   elif n == 3:
     return {tuple()}
-  else:
-    pass
-    # TODO
+  
+  result = set()
+  # Case 1: There is an edge of the form (0,i).
+  for i in range(2, n-1):
+    for T in triangulations(i+1):
+      for S in triangulations(n-i+1):
+        triangulation = [(0,i)] + list(T) + [(j+(i-1) if j > 0 else 0, (k+(i-1))) for (j,k) in S]
+        result.add(tuple(sorted(triangulation)))
+  # Case 2: There is no edge of the form (0,i) so there must be an edge (1,n-1).
+  for T in triangulations(n-1):
+    triangulation = [(1,n-1)] + [(j+1,k+1) for (j,k) in T]
+    result.add(tuple(sorted(triangulation)))
+  return result
