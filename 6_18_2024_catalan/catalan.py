@@ -2,7 +2,7 @@ import itertools
 
 def parenthesizations(n):
   """
-  .
+
   Returns a set of all possible parenthesizations of length n.
 
   Parameters:
@@ -39,7 +39,7 @@ def parenthesizations_helper(res, open, close, output):
       
 def product_orders(n):
   """
-  Returns a list of all possible ways to multiply of n elements.
+  Returns a set of all possible ways to multiply of n elements.
 
   Parameters:
     n (int): The number of elements multiplied.
@@ -78,13 +78,13 @@ def product_orders_helper(n, overall_length):
 
 def permutations_avoiding_231(n):
   """
-  Returns a list of permutations of length n avoiding the pattern 2-3-1.
+  Returns a set of permutations of length n avoiding the pattern 2-3-1.
   
   Parameters:
     n (int): The length of the permutation.
   
   Returns:
-    A list of permutations of length n that do not contain the pattern 2-3-1.
+    A set of permutations of length n that do not contain the pattern 2-3-1.
   
   Example:
   >>> permutations_avoiding_231(4)
@@ -119,8 +119,8 @@ def permutations_avoiding_231(n):
 
 def triangulations(n):
   """
-  Returns a list of all possible triangulations of an n-sided polygon. A triangulation
-  is represented as a list of internal edges. Vertices are labeled 0 through n-1 clockwise.
+  Returns a set of all possible triangulations of an n-sided polygon. A triangulation
+  is represented as a tuple of internal edges. Vertices are labeled 0 through n-1 clockwise.
 
   Parameters:
     n (int): The number of sides of the polygon.
