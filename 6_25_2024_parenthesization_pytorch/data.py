@@ -6,6 +6,7 @@ from torch import nn
 
 device = "cpu"
 
+
 def parenthesization_to_tensor(parenthesization):
     """
     Convert a parenthesization string to a pytorch tensor representation.
@@ -19,17 +20,23 @@ def parenthesization_to_tensor(parenthesization):
         Each element in the tensor is either 0 or 1, representing whether the corresponding
         parenthesization character is "(" or ")".
     """
-    # TODO
-    pass
+    t = torch.tensor([0 if c == "(" else 1 for c in parenthesization])
+    return torch.flatten(F.one_hot(t, 2).float())
+
 
 class ParenthesizationDataset(Dataset):
     def __init__(self, n):
         self.data = []
         filename = f"data/parenthesizations_{n}.csv"
-        with open(filename, 'r') as file:
+        with open(filename, "r") as file:
             csv_reader = csv.DictReader(file)
             for row in csv_reader:
-                self.data.append((parenthesization_to_tensor(row["parenthesization"]), int(row["valid"])))
+                self.data.append(
+                    (
+                        parenthesization_to_tensor(row["parenthesization"]),
+                        int(row["valid"]),
+                    )
+                )
 
     def __len__(self):
         return len(self.data)
@@ -37,10 +44,11 @@ class ParenthesizationDataset(Dataset):
     def __getitem__(self, idx):
         return self.data[idx]
 
+
 class ParenthesizationModel(nn.Module):
     def __init__(self, n):
         super().__init__()
-        self.fc = nn.Linear(2*2*n, 2)
+        self.fc = nn.Linear(2 * 2 * n, 2)
 
     def forward(self, x):
         return self.fc(x)
