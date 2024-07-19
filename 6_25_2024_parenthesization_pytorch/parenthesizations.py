@@ -23,7 +23,7 @@ def valid(n):
         for d in valid(n - i - 1):
           result.append("(" + c + ")" + d)
     return result
-
+print(valid(4))
 def invalid(n):
   """
   Generates a set of all invalid parenthesizations of length 2n.
