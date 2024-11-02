@@ -4,13 +4,7 @@ This is repository contains the course materials for the course [Math 480 - Comp
 
 Each assignment is self-contained in its own folder in this repository but you are recommended to go through the assignments in order. There is an associated `README.md` for each assignment with instructions for how to get started, along with some additional pedagogical material. If you are stuck or want to see a reference solution each assignment folder contains a `solutions/` folder that you can compare your implementation to.
 
-Before you begin working through the assignments, I recommend setting up a Conda environment to help manage Python dependencies and installing either Codeium or Cursor so that you can try completing the assignments with AI assistance. The remaining sections of this `README` will walk you through setting up Conda and describe what you can do with AI tools.
-
-## Conda Setup
-[Conda](https://docs.anaconda.com/) is a tool that helps you set up isolated development environments. By creating a Conda environment, you can ensure that your version of Python and the relevant libraries are compatible with the starter code for the assignments. You will specifically be using Miniconda which is a lightweight version of Anaconda and is faster to install. To install Miniconda and the relevant libraries, follow these steps:
-
-1. Download and install Miniconda for your operating system [here](https://docs.anaconda.com/miniconda/#latest-miniconda-installer-links). Type `no` when asked about whether or not to automatically initialize conda.
-2. 
+Before you begin working through the assignments, I recommend setting up a Conda environment to help manage Python dependencies and installing either Codeium or Cursor so that you can try completing the assignments with AI assistance. 
 
 ## AI Tools
 
